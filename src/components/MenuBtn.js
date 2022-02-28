@@ -3,10 +3,11 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const history = useHistory();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -39,7 +40,15 @@ export default function SimpleMenu() {
         >
           <MenuItem onClick={handleClose}>Login</MenuItem>
         </Link>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem
+          onClick={() => {
+            window.localStorage.clear();
+            history.push("/login");
+            history.go(0);
+          }}
+        >
+          Logout
+        </MenuItem>
       </Menu>
     </div>
   );
