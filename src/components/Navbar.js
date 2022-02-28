@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Menu from "./MenuBtn";
 import styled from "styled-components";
 const Container = styled.div`
